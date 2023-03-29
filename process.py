@@ -8,16 +8,16 @@ RANK_MIN = 1
 
 RANK_MAX = 10
 
-""" 
-Función que sirve para convertir un texto a su versión slug,
-esto hace más facil el manejo del producto como una llave, ya que
-esta función reemplaza los espacios en blanco por "-", remueve las tildes, dieresis.
-
-Esta función la saque del código del framework django.
-"""
-
 
 def slugify(value, allow_unicode=False):
+    """
+    Función que sirve para convertir un texto a su versión slug,
+    esto hace más facil el manejo del producto como una llave, ya que
+    esta función reemplaza los espacios en blanco por "-", remueve las tildes, dieresis.
+
+    Esta función la saque del código del framework django.
+    """
+
     """
     Convert to ASCII if 'allow_unicode' is False. Convert spaces to hyphens.
     Remove characters that aren't alphanumerics, underscores, or hyphens.
@@ -125,8 +125,8 @@ def build_product_rankings(csv_data: List):
         dict_headers[header] = {'index': index, 'ranks': {}, 'total': 0}
 
         """
-        Aqui, creamos cada peso como un diccionario en cada producto, donde el peso es la llave del diccionario,
-        y su valor inicial sera 0, ya que aun no se hace los calculos 
+        Aqui, cada producto tendra un diccionario donde sus llaves sera el peso, y el valor comenzara en 0, ya que
+        hasta aqui, aun no se realizan los calculos
         """
         for n in range(RANK_MIN, RANK_MAX + 1):
             rank_string = '{}'.format(n)
@@ -138,7 +138,6 @@ def build_product_rankings(csv_data: List):
     return product_with_total
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     csv_data = read_csv()
     build_product_rankings(csv_data)
